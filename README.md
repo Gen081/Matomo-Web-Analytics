@@ -32,5 +32,24 @@ Accept the warning about host authenticity if it appears. If using password auth
 
 The root user is the administrative user in a Linux environment that has very broad privileges. The root account is able to make very destructive changes, even by accident.
 
+![](pics/login-root.png)
+
+#### Step 2 — Creating a New User
+
+Once logged in as root, a new user account can be add.  In the future, we’ll log in with this new account instead of root.
+
+~~~
+# adduser sammy
+
+~~~
+
+
+Answer few questions, starting with the account password.
+
+Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit `ENTER` in any field you wish to skip.
+
+![](pics/root-newuser.png)
+
+
 
 
