@@ -18,56 +18,67 @@ Create a new Ubuntu 20.04 server, and perform some important configuration steps
 
 #### Step 1 — Logging in as root
 
-To log into the server, a public IP address for the server is needed.  For security: a password or – configuration of an SSH key authentication – the private key for the root user’s account is important. 
+For security purposes, log in as root can be done several ways: a password or – configuration of an SSH key authentication – the private key for the root user’s account is important. 
 
-If not already connected to the server, log in now as the root user using the following command (substitute the highlighted portion of the command with the server’s public IP address):
+I inially connect to my EC2 server using the following:
 
-~~~
-$ ssh root@your_server_ip
+![](pics/log-root.png) 
 
-~~~
-
-
-Accept the warning about host authenticity if it appears. If using password authentication, provide the root password to log in. If using an SSH key that is passphrase protected, may be prompted to enter the passphrase the first time using the key each session. If this is the first time logging into the server with a password, may also be prompted to change the root password. 
-
-The root user is the administrative user in a Linux environment that has very broad privileges. The root account is able to make very destructive changes, even by accident.
-
-![](pics/login-root.png)
 
 #### Step 2 — Creating a New User
 
-Once logged in as root, a new user account can be add.  In the future, we’ll log in with this new account instead of root.
+In order to create a new user, it is important to log in as root. The root user is the administrative user in a Linux environment that has very broad privileges. Type the following command:
 
 ~~~
 # adduser sammy
 
 ~~~
 
+![](pics/adduser.png)
 
-Answer few questions, starting with the account password.
-
-Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit `ENTER` in any field you wish to skip.
-
-![](pics/root-newuser.png)
+A few questions will be asking, starting with the account password. Enter a strong password, the additional information is not required, just hit `ENTER` to skip.
 
 
 #### Step 3 — Granting Administrative Privileges
 
-Now that there is a new user account with regular account privileges. However, this new user may sometimes need to do administrative tasks.
-
-To avoid having to log out this new user and log back in as the root account, let's set up what is known as superuser or root privileges for the new user account. This will allow to new user to run commands with administrative privileges by putting the word sudo before the command.
-
-To add these privileges to the new user, add the user to the sudo group. By default, on Ubuntu 20.04, users who are members of the sudo group are allowed to use the sudo command.
+As the new user account is now created, let's add some privileges to it. These privileges will be needed to perform administratives tasks. The process to grant privileges is to add the user to the sudo group. By default, on Ubuntu 20.04, users who are members of the sudo group are allowed to use the sudo command.
 
 ~~~
 usermod -aG sudo sammy
 ~~~
 
-When logged in as your regular user, you can type sudo before commands to run them with superuser privileges.
+![](pics/grant-adm-P.png)
 
-![](pics/grant-admin-p.png)
+
 
 #### **Step 4 — Setting Up a Basic Firewall**
 
 Ubuntu 20.04 servers can use the UFW firewall to make sure only connections to certain services are allowed. Let's set up a basic firewall using this application.
+
+OpenSSH, the service allowing us to connect to our server now, has a profile registered with UFW,
+
+```
+# ufw app list
+```
+
+Ensure that the firewall allows SSH connections so that we can log back in next time. Allow these connections by typing: 
+
+
+```
+# ufw allow OpenSSH
+```
+
+Enable the firewall by typing:
+
+```
+# ufw enable
+```
+Type yand press `ENTER` to proceed. 
+
+
+```
+# ufw status
+```
+
+![](pics/firewall-set.png)
 
