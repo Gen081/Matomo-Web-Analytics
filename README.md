@@ -51,5 +51,23 @@ Enter a strong password and, optionally, fill in any of the additional informati
 ![](pics/root-newuser.png)
 
 
+#### Step 3 — Granting Administrative Privileges
 
+Now that there is a new user account with regular account privileges. However, this new user may sometimes need to do administrative tasks.
+
+To avoid having to log out this new user and log back in as the root account, let's set up what is known as superuser or root privileges for the new user account. This will allow to new user to run commands with administrative privileges by putting the word sudo before the command.
+
+To add these privileges to the new user, add the user to the sudo group. By default, on Ubuntu 20.04, users who are members of the sudo group are allowed to use the sudo command.
+
+~~~
+usermod -aG sudo sammy
+~~~
+
+When logged in as your regular user, you can type sudo before commands to run them with superuser privileges.
+
+![](pics/grant-admin-p.png)
+
+#### **Step 4 — Setting Up a Basic Firewall**
+
+Ubuntu 20.04 servers can use the UFW firewall to make sure only connections to certain services are allowed. Let's set up a basic firewall using this application.
 
