@@ -31,7 +31,6 @@ In order to create a new user, it is important to log in as root. The root user
 
 ~~~
 # adduser sammy
-
 ~~~
 
 ![](pics/adduser.png)
@@ -50,7 +49,6 @@ usermod -aG sudo sammy
 ![](pics/grant-adm-P.png)
 
 
-
 #### **Step 4 — Setting Up a Basic Firewall**
 
 Ubuntu 20.04 servers can use the UFW firewall to make sure only connections to certain services are allowed. Let's set up a basic firewall using this application.
@@ -63,7 +61,6 @@ OpenSSH, the service allowing us to connect to our server now, has a profile reg
 
 Ensure that the firewall allows SSH connections so that we can log back in next time. Allow these connections by typing: 
 
-
 ```
 # ufw allow OpenSSH
 ```
@@ -73,7 +70,7 @@ Enable the firewall by typing:
 ```
 # ufw enable
 ```
-Type yand press `ENTER` to proceed. 
+Type `yes` and press `ENTER` to proceed. 
 
 
 ```
@@ -121,7 +118,7 @@ $ ssh-keygen
 ```
 ![](pics/keypair.png)
 
-### Copying the Public Key Using ```ssh-copy-id```
+### 2 - Copying the Public Key Using ```ssh-copy-id```
 
 The `ssh-copy-id` tool is included by default in many operating systems, so you may have it available on your local system. For this method to work, you must already have password-based SSH access to your server.
 
@@ -133,4 +130,4 @@ $ ssh-copy-id username@remote_host
 ![](pics/copy-public-key.png)
 
 
-### 3 — Authenticating to Your Ubuntu Server Using SSH Keys
+### 3 - Authenticating to Your Ubuntu Server Using SSH Keys
