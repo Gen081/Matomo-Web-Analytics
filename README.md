@@ -131,3 +131,50 @@ $ ssh-copy-id username@remote_host
 
 
 ### 3 - Authenticating to Your Ubuntu Server Using SSH Keys
+
+The basic process is the same:
+
+```
+$ ssh username@remote_host
+```
+![](pics/authenticate-ubuntuserver.png)
+
+### 4 - Disabling Password Authentication on Your Server
+
+Before completing the steps in this section, make sure that you either have SSH-key-based authentication configured for the root account on this server, or preferably, that you have SSH-key-based authentication configured for a non-root account on this server with sudo privileges.
+
+```
+$ sudo nano /etc/ssh/sshd_config
+```
+![](pics/step4.png)
+
+Inside the file, search for a directive called `PasswordAuthentication`. This will disable the ability to log in via SSH using account passwords:
+
+```
+. . .
+PasswordAuthentication no
+. . .
+```
+
+
+![](pics/pssauthenticate:no.png)
+
+Save and close the file when you are finished by pressing `CTRL+X`, then `Y` to confirm saving the file, and finally `ENTER` to exit nano. To actually activate these changes, restart the `sshd` service:
+
+```
+$ sudo systemctl restart ssh
+```
+
+Open up a new terminal window and test that the SSH service is functioning correctly before closing the current session:
+
+```
+$ ssh username@remote_host
+```
+![](pics/pssauthenticate1:no.png)
+
+
+
+
+
+
+
