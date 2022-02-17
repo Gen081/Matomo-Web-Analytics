@@ -82,3 +82,55 @@ Type yand press `ENTER` to proceed.
 
 ![](pics/firewall-set.png)
 
+#### Step 5 — Enabling External Access for Your Regular User
+
+Now that we have a regular user for daily use, we need to make sure we can SSH into the account directly
+
+![](pics/newuserroot-access.png)
+
+Accessing that new user, there might be some permission issue. To fix that, type:
+
+```
+sudo nano /etc/ssh/sshd_config
+```
+Enter the password for the new user. Then it will open a nano text template as such:
+
+![](pics/newuser-nano.png)
+Scroll down and look for :
+```
+#PermitRootLogin yes
+``` 
+
+```
+PasswordAuthentication yes
+```
+
+change the `no` that already assigned to `yes`
+then: 
+```
+sudo service ssh restart
+```
+
+
+#### How to Set Up SSH Keys on your PC
+
+##### Step 1 — Creating the Key Pair
+
+```
+$ ssh-keygen
+```
+![](pics/keypair.png)
+
+### Copying the Public Key Using ```ssh-copy-id```
+
+The `ssh-copy-id` tool is included by default in many operating systems, so you may have it available on your local system. For this method to work, you must already have password-based SSH access to your server.
+
+The syntax is:
+
+```
+$ ssh-copy-id username@remote_host
+```
+![](pics/copy-public-key.png)
+
+
+### 3 — Authenticating to Your Ubuntu Server Using SSH Keys
