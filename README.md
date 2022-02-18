@@ -231,32 +231,3 @@ and Add the Docker repository to APT sources:
 $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal table"
 ```
 ![](pics/docker-gpgkeyrepo.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![](pics/sudo-apt-install.png)
-
-$ sudo apt install apt-transport-https ca-certificates curl software-properties-common
-
-```
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-```
-![](pics/gpg-key.png)
-
-Add the Docker repository to APT sources:
-
-
