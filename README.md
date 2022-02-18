@@ -224,10 +224,38 @@ Then add the GPG key for the official Docker repository to the system:
 
 ```
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
 
 and Add the Docker repository to APT sources:
 
 ```
 $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal table"
+
 ```
-![](pics/docker-gpgkeyrepo.png)
+
+![](pics/docker-gpgnrepo.png)
+
+It is important to install from the Docker repo instead of the default Ubuntu repo:
+
+```
+apt-cache policy docker-ce
+```
+
+![](pics/docker-ce.png)
+
+
+Now, let's install Docker.
+
+![](pics/docker-install.png)
+
+
+Docker should now be installed, the daemon started, and the process enabled to start on boot. Check that it’s running:
+
+```
+$ sudo systemctl status docker
+```
+
+![](pics/docker-daemon.png)
+
+
+
