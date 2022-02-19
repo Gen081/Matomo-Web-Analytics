@@ -368,3 +368,34 @@ It is  also important to configurate geographic area and time zone while inside 
 
 
 
+#### Step 6 — Managing Docker Containers
+
+After using Docker for a while, you’ll have many active (running) and inactive containers on your computer. To view the active ones, use:
+
+```
+docker ps
+```
+
+![](pics/docker-container3.png)
+
+
+To view all containers — active and inactive, run:
+
+![](pics/docker-container4.png)
+
+To view the latest container you created, pass it the `-l` switch:
+
+![](pics/docker-container5.png)
+
+To start a stopped container, use docker start, followed by the container ID or the container’s name. Let’s start the Ubuntu-based container with the ID of : `7b32f846f649`
+
+![](pics/docker-container6.png)
+
+
+To stop a running container, use `docker stop`, followed by the container ID or name. This time, we’ll use the name that Docker assigned the container, which is `optimistic_agnesi`:
+
+![](pics/docker-container6.png)
+
+#### Step 7 — Committing Changes in a Container to a Docker Image
+
+
