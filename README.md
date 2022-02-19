@@ -436,3 +436,102 @@ then
 Push and commit docker image
 
 ![](pics/docker-push3.png)
+
+
+### 3. Docker Compose installed.
+
+Docker simplifies the process of managing application processes in containers. While containers are similar to virtual machines in certain ways, they are more lightweight and resource-friendly. This allows developers to break down an application environment into multiple isolated services.
+
+Docker Compose is a tool that allows you to run multi-container application environments based on definitions set in a YAML file. It uses service definitions to build fully customizable environments with multiple containers that can share networks and data volumes.
+
+#### Prerequisites
+
+- Access to an Ubuntu 20.04 local machine or development server as a non-root user with sudo privileges. If you’re using a remote server, it’s advisable to have an active firewall installed.
+- Docker installed on your server or local machine.
+
+The following command will download the 1.27.4 release and save the executable file at /usr/local/bin/docker-compose, which will make this software globally accessible as docker-compose:
+
+```
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+![](pics/docker-compose.png)
+
+Next, set the correct permissions so that the docker-compose command is executable:
+
+```
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+
+To verify that the installation was successful, you can run:
+
+```
+$ docker-compose --version
+```
+![](pics/docker-compose1.png)
+
+
+Now that the Docker Compose is successfully installed on your system. In the next section, let's set up a `docker-compose.yml` file and get a containerized environment up and running with this tool.
+
+
+#### Step 2 — Setting Up a `docker-compose.yml` File
+
+To demonstrate how to set up a docker-compose.yml file and work with Docker Compose, we’ll create a web server environment using the official Nginx image from Docker Hub, the public Docker registry. This containerized environment will serve a single static HTML file.
+
+```
+$ mkdir ~/compose-demo
+cd ~/compose-demo
+```
+
+In this directory, set up an application folder to serve as the document root for your Nginx environment:
+
+```
+$ mkdir app
+```
+
+```
+$ nano app/index.html
+```
+
+![](pics/docker-compose2.png)
+
+
+```
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Docker Compose Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css">
+</head>
+<body>
+
+	<h1>This is a Docker Compose Demo Page.</h1>
+	<p>This content is being served by an Nginx container.</p>
+
+</body>
+</html>
+```
+
+```
+$ nano docker-compose.yml
+```
+
+```
+version: '3.7'
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/usr/share/nginx/html
+```
+The docker-compose.yml file typically starts off with the version definition. This will tell Docker Compose which configuration version we’re using.
+
+
+#### Step 3 — Running Docker Compose
+
+
+
+
