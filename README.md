@@ -549,3 +549,36 @@ Now access the demo application by pointing your browser to either `localhost:8
 
 ![](pics/docker-compose5.png)
 
+
+
+### Step 1 — Running Matomo and MariaDB with Docker Compose
+First step will be to create the Docker Compose configuration that will launch containers for both the Matomo app and a MariaDB database.
+
+![](pics/matomo-run.png)
+
+docker-compose.yml:
+
+![](pics/nano-docker.png)
+
+
+
+```
+nano .env
+```
+![](pics/mariadb.png)
+
+One way of generating a strong password is to use the openssl command, which should be available on most any operating system. The following command will print out a random 30 character hash that you can use as a password:
+
+```
+openssl rand 30 | base64 -w 0 ; echo
+```
+
+Now, ready to bring up the two containers with `docker-compose`:
+
+![](pics/sudo-dock-compose.png)
+
+![](pics/curl.png)
+
+
+### Step 2 — Installing and Configuring Nginx
+
