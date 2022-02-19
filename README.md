@@ -532,6 +532,20 @@ The docker-compose.yml file typically starts off with the version definition. Th
 
 #### Step 3 — Running Docker Compose
 
+With the docker-compose.yml file in place, let's now execute Docker Compose to bring our environment up.
+
+With the docker-compose.yml file in place, we can now execute Docker Compose to bring our environment up.
+
+The environment is now up and running in the background. To verify that the container is active, run:
+
+Now access the demo application by pointing your browser to either `localhost:8000` or `your_server_domain_or_IP:8000`
+
+![](pics/docker-demopage.png)
 
 
+
+
+#### Step 4 — Getting Familiar with Docker Compose Commands
+
+![](pics/docker-compose5.png)
 
