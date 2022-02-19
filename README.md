@@ -398,4 +398,41 @@ To stop a running container, use `docker stop`, followed by the container ID or
 
 #### Step 7 — Committing Changes in a Container to a Docker Image
 
+When start up a Docker image, you can create, modify, and delete files just like you can with a virtual machine. 
+This section shows you how to save the state of a container as a new Docker image.
 
+
+After installing Node.js inside the Ubuntu container, you now have a container running off an image, but the container is different from the image you used to create it. But you might want to reuse this Node.js container as the basis for new images later.
+
+Then commit the changes to a new Docker image instance using the following command:
+
+![](pics/docker-commit.png)
+
+then typing:
+
+```
+$ docker images
+```
+![](pics/docker-commit1.png)
+
+
+#### Step 8 — Pushing Docker Images to a Docker Repository
+
+The next logical step after creating a new image from an existing image is to share it with a select few of your friends, the whole world on Docker Hub, or other Docker registry that you have access to. To push an image to Docker Hub or any other Docker registry, you must have an account there.
+
+
+To push your image, first log into Docker Hub.
+
+```
+docker login -udocker-registry-username
+```
+
+![](pics/docker-push1.png)
+
+then 
+
+![](pics/docker-push2.png)
+
+Push and commit docker image
+
+![](pics/docker-push3.png)
