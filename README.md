@@ -342,3 +342,29 @@ $ docker images
 
 The hello-world container ran in the previous step is an example of a container that runs and exits after emitting a test message. Containers can be much more useful than that, and they can be interactive. Containers are similar to virtual machines, but more resource-friendly.
 
+Let’s run a container using the latest image of Ubuntu. 
+
+```
+$ docker run -it ubuntu
+```
+
+![](pics/docker-container.png)
+
+Let’s update the package database inside the container. 
+
+```
+$ sudo apt update
+```
+
+Then install any application in it. Let’s install Node.js:
+
+```
+$ sudo apt install nodejs
+```
+It is  also important to configurate geographic area and time zone while inside the docker container and installing `node.js`
+
+![](pics/docker-container1.png)
+![](pics/docker-container2.png)
+
+
+
