@@ -258,4 +258,87 @@ $ sudo systemctl status docker
 ![](pics/docker-daemon.png)
 
 
+#### Step 2 — Executing the Docker Command Without Sudo (Optional)
+
+
+By default, the `docker` command can only be run the **root** user or by a user in the **docker** group, which is automatically created during Docker’s installation process. To avoid typing sudo whenever you run the docker command, add your username to the docker group:
+
+first run :
+
+```
+$ sudo username
+```
+then 
+
+```
+$ sudo usermod -aG docker ${USER}
+```
+![](pics/docker-sudouser.png)
+
+To apply the new group membership, log out of the server and back in, or type the following:
+
+```
+$ su - ${USER}
+```
+
+It will be prompted to enter the user’s password to continue.
+Confirm that your user is now added to the **docker** group by typing:
+
+```
+$ groups
+```
+
+![](pics/docker-su-user.png)
+
+If need to add a user to the docker group that you’re not logged in as, declare that username explicitly using:
+
+![](pics/docker-usermod.png)
+
+
+
+#### Step 3 — Using the Docker Command
+
+To view all available subcommands on docker, type:
+
+```
+$ docker
+```
+
+
+#### Step 4 — Working with Docker Images
+
+Docker containers are built from Docker images. By default, Docker pulls these images from Docker Hub, a Docker registry managed by Docker, the company behind the Docker project. 
+
+To check whether you can access and download images from Docker Hub, type:
+
+```
+$ docker run hello-world
+```
+![](pics/docker-img.png)
+
+Search for images available on Docker Hub by using the docker command with the search subcommand. Type: 
+
+```
+$ docker search ubuntu
+```
+
+![](pics/docker-img1.png)
+
+Execute the following command to download the official `ubuntu` image to your computer:
+
+```
+$ docker pull ubuntu
+```
+
+![](pics/docker-img2.png)
+
+To see the images that have been downloaded to your computer, type:
+
+```
+$ docker images
+```
+
+#### Step 5 — Running a Docker Container
+
+The hello-world container ran in the previous step is an example of a container that runs and exits after emitting a test message. Containers can be much more useful than that, and they can be interactive. Containers are similar to virtual machines, but more resource-friendly.
 
