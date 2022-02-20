@@ -582,3 +582,44 @@ Now, ready to bring up the two containers with `docker-compose`:
 
 ### Step 2 — Installing and Configuring Nginx
 
+Putting a web server such as Nginx in front of your Matomo server can improve performance by offloading caching, compression, and static file serving to a more efficient process. Let's install Nginx and configure it to reverse proxy requests to Matomo, meaning it will take care of handing requests from your users to Matomo and back again. 
+
+```
+sudo apt update
+sudo apt install nginx
+```
+
+![](pics/nginx-conf.png)
+
+
+Allow public traffic to ports `80` and `443` (HTTP and HTTPS) using the “Nginx Full” UFW application profile:
+
+```
+sudo ufw allow "Nginx Full"
+```
+
+At this point, a domain name is required to move forward. Google provides some options to purchase domain name. Once a domain name is created, remove the `your_domain_here` and replace it witht the new domain name that was created.
+
+The screenshots below are the nano text file:
+
+![](pics/nginx-old-domain.png)
+
+
+![](pics/nginx-domain-name.png)
+
+Save and close the file, then enable the configuration by linking it into:
+
+```
+sudo ln -s /etc/nginx/sites-available/matomo.conf /etc/nginx/sites-enabled/
+```
+Then
+
+```
+sudo ln -s /etc/nginx/sites-available/matomo.conf /etc/nginx/sites-enabled/
+```
+
+
+```
+sudo nginx -t
+```
+After pressing `ENTER` there is an error, type this command 
