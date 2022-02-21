@@ -680,7 +680,6 @@ Back in the web browser, it should now have Matomo’s Welcome! page open via 
 
 ![](pics/matomohmpage.png)
 
-
 Right below, is a summary of the system Matomo is running on, and everything should be green checkmarks indicating there are no problems.
 ![](pics/matomohmpage1.png) 
 
@@ -698,8 +697,23 @@ The defaults are fine for the remaining two fields.
 ![](pics/matomohmpage2.png)
 
 ![](pics/matomohmpage3.png)
+
 ![](pics/matomohmpage4.png)
+
 ![](pics/matomohmpage5.png)
+
 ![](pics/matomohmpage6.png)
 
-![](pics/matomohmpage7.png)
+This is warning, and to fix it there is a small update to do in the Matomo configuration's file to finish the process.
+
+![](pics/matomohmpage7.png). 
+
+Type the following process:
+
+```
+sudo nano matomo/config/config.ini.php
+```
+
+
+
+
