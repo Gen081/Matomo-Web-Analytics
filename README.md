@@ -622,4 +622,36 @@ sudo ln -s /etc/nginx/sites-available/matomo.conf /etc/nginx/sites-enabled/
 ```
 sudo nginx -t
 ```
-After pressing `ENTER` there is an error, type this command 
+
+```
+Output
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+
+And finally, reload the nginx service to pick up the new configuration:
+
+```
+sudo systemctl reload nginx
+```
+
+After pressing `ENTER` if there is an error, type this command:
+```
+sudo systemctl reload nginx
+```
+![](pics/nginx-conf-resol.png)
+
+then
+```
+sudo systemctl reload nginx
+```
+
+Now, the Matomo site should now be available on plain HTTPS. Load http://your_domain_here  , and it will look like this:
+
+![](pics/matomohmpage.png)
+
+
+Now that the site up and running over HTTPS, it’s time to secure the connection with Certbot and Let’s Encrypt certificates. This step should be done before going through Matomo’s web-based setup procedure.
+
+### Step 3 — Installing Certbot and Setting Up SSL Certificates
+
