@@ -646,12 +646,60 @@ then
 sudo systemctl reload nginx
 ```
 
-Now, the Matomo site should now be available on plain HTTPS. Load http://your_domain_here  , and it will look like this:
+Now, the Matomo site should now be available on plain HTTP. Load http://your_domain_here  , and it will look like this:
 
 ![](pics/matomohmpage.png)
 
 
-Now that the site up and running over HTTPS, it’s time to secure the connection with Certbot and Let’s Encrypt certificates. This step should be done before going through Matomo’s web-based setup procedure.
+Now that the site up and running over HTTP, it’s time to secure the connection with Certbot and Let’s Encrypt certificates. This step should be done before going through Matomo’s web-based setup procedure.
 
 ### Step 3 — Installing Certbot and Setting Up SSL Certificates
 
+The Certbot and the Let’s Encrypt free certificate authority, adding SSL encryption to Matomo app will take only two commands as follow:
+
+First, install Certbot and its Nginx plugin:
+```
+sudo apt install certbot python3-certbot-nginx
+```
+
+Next, run certbot in --nginx mode, and specify the same domain used in the Nginx server_name config:
+```
+sudo certbot --nginx -dyour_domain_here
+```
+![](pics/certbot-install.png)
+![](pics/certbot-install1.png)
+
+
+Certbot will automatically reload Nginx to pick up the new configuration and certificates. Reload the site and it should switch over to HTTPS automatically if choosing the redirect option.
+
+The site is now secure and it’s safe to continue with the web-based setup steps.
+
+### Step 4 — Setting Up Matomo
+
+Back in the web browser, it should now have Matomo’s Welcome! page open via a secure https:// connection. Now enter usernames and passwords safely to complete the installation process.
+
+![](pics/matomohmpage.png)
+
+
+Right below, is a summary of the system Matomo is running on, and everything should be green checkmarks indicating there are no problems.
+![](pics/matomohmpage1.png) 
+
+This is the Database Setup page. The information you fill in on this page will tell the Matomo application how to connect to the MariaDB database. You’ll need the `MARIADB_USER` and `MARIADB_PASSWORD` that you chose in Step 1. Copy them out of your .env file if need to.
+
+Fill out the first four fields:
+
+- **Database Server:** db
+- **Login:** the username you set in the `MARIADB_USER` environment variable
+- **Password:** the password you set in the `MARIADB_PASSWORD` environment variable
+- **Database Name:** matomo
+
+The defaults are fine for the remaining two fields.
+
+![](pics/matomohmpage2.png)
+
+![](pics/matomohmpage3.png)
+![](pics/matomohmpage4.png)
+![](pics/matomohmpage5.png)
+![](pics/matomohmpage6.png)
+
+![](pics/matomohmpage7.png)
