@@ -706,14 +706,23 @@ The defaults are fine for the remaining two fields.
 
 This is warning, and to fix it there is a small update to do in the Matomo configuration's file to finish the process.
 
-![](pics/matomohmpage7.png). 
+![](pics/matomohmpage7.png)
 
 Type the following process:
 
 ```
 sudo nano matomo/config/config.ini.php
 ```
+![](pics/final-nano.png)
 
+These options let Matomo know that it’s safe to use port `8080`, and that it should assume it’s always being accessed over a secure connection.
 
+Save and close the configuration file, then switch back to your browser and reload the page. The error should be gone, and you’ll be presented with a login prompt:
+
+![](pics/final-matomo-log.png)
+
+![](pics/finalpage.png)
+
+![](pics/finalpage1.png)
 
 
