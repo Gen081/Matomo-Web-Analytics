@@ -16,6 +16,25 @@ In order to successful complete this project, it is important to follow these in
 
 Create a new Ubuntu 20.04 server, and perform some important configuration steps as part of the initial setup. These steps will increase the security and usability of the server, and will give a solid foundation for subsequent actions.
 
+These followings below will demonstrate how to create a new Ubuntu 20.04 server:
+
+![](pics/aws-console.png)
+
+![](pics/ec2-search.png)
+
+![](pics/ec2-launch.png)
+
+![](pics/ec2-launch1.png)
+
+![](pics/ec2-launch2.png)
+
+![](pics/ec2-launch3.png)
+
+![](pics/ec2-launch4.png)
+
+![](pics/ec2-launch5.png)
+
+
 ##### Step 1 — Logging in as root
 
 For security purposes, log in as root can be done several ways: a password or – configuration of an SSH key authentication – the private key for the root user’s account is important. 
@@ -309,7 +328,13 @@ $ docker
 
 Docker containers are built from Docker images. By default, Docker pulls these images from Docker Hub, a Docker registry managed by Docker, the company behind the Docker project. 
 
-To check whether you can access and download images from Docker Hub, type:
+One of the first step working with Docker images is to create a repository on Docker Hub.
+
+![](pics/docker-hub.png)
+
+
+
+Then To check whether  access is giving and download images from Docker Hub, type:
 
 ```
 $ docker run hello-world
@@ -321,22 +346,23 @@ Search for images available on Docker Hub by using the docker command with the
 ```
 $ docker search ubuntu
 ```
-
 ![](pics/docker-img1.png)
 
-Execute the following command to download the official `ubuntu` image to your computer:
+Once the image to be used is identified, please download it to the local machine using the following commands:
 
-```
-$ docker pull ubuntu
-```
+![](pics/docker-how2push0.png)
 
-![](pics/docker-img2.png)
+![](pics/docker-how2push.png)
 
-To see the images that have been downloaded to your computer, type:
+![](pics/docker-how2push1.png)
 
-```
-$ docker images
-```
+![](pics/docker-how2pushcontainer.png)
+
+![](pics/docker-how2pushcontainer.png)
+
+![](pics/docker-how2pushfinal.png)
+
+
 
 #### Step 5 — Running a Docker Container
 
